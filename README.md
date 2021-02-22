@@ -7,7 +7,7 @@ All image/icons are from Font Awesome or Flaticon.com
 
 | Light Theme  | Dark Theme | GIF |
 | ------------- | ------------- | ------------- |
-| ![Light Theme](https://github.com/GiacomoPignoni/light-todo/blob/master/media/light.PNG)  | ![Dark Theme](https://github.com/GiacomoPignoni/light-todo/blob/master/media/dark.PNG)  | ![Gif](https://github.com/GiacomoPignoni/light-todo/blob/master/media/gif.gif) |
+| ![Light Theme](https://github.com/GiacomoPignoni/light-todo/blob/main/media/light.PNG)  | ![Dark Theme](https://github.com/GiacomoPignoni/light-todo/blob/main/media/dark.PNG)  | ![Gif](https://github.com/GiacomoPignoni/light-todo/blob/main/media/gif.gif) |
 
 
 
@@ -27,7 +27,7 @@ It's not over, I plan to do other changes to make it more usefull
  
 ### Build in your own
 In this momemnt it's not avaible for Linux and MacOS but you can build in your own
-- Copy this repo and select `master` branch
+- Copy this repo and select `main` branch
 - Install Npm packages with `npm install`
 - Build it with `npm run electron:build`
 - You can find your build in `release` folder
