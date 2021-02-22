@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
 var path = require("path");
 var url = require("url");
+var todo_list_utils_1 = require("./shared/todo-list-utils");
+var events_1 = require("./shared/events");
 var win = null;
 var tray = null;
 var args = process.argv.slice(1), serve = args.some(function (val) { return val === "--serve"; });
@@ -44,6 +46,13 @@ function createTray() {
     tray.setToolTip("Light todo");
     var menu = electron_1.Menu.buildFromTemplate([
         {
+            label: "Toggle Dark mode",
+            type: "normal",
+            click: function () {
+                win.webContents.send(events_1.Events.toggleDarkMode);
+            }
+        },
+        {
             label: "Quit",
             type: "normal",
             click: function () {
@@ -53,25 +62,42 @@ function createTray() {
     ]);
     tray.setContextMenu(menu);
     tray.addListener("click", function () {
-        if (win === null) {
-            createWindow();
-        }
+        win.show();
     });
 }
+function subscribeToEvents() {
+    electron_1.ipcMain.on(events_1.Events.saveTodoList, function (event, todoList) {
+        todo_list_utils_1.TodoListUtils.setGlobalTodoList(todoList);
+        todo_list_utils_1.TodoListUtils.saveTodoList(todoList);
+    });
+}
+function preloadTodoList() {
+    var todoList = todo_list_utils_1.TodoListUtils.loadTodoList();
+    todo_list_utils_1.TodoListUtils.setGlobalTodoList(todoList);
+}
 try {
-    // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-    electron_1.app.on("ready", function () { return setTimeout(function () {
-        createTray();
-        createWindow();
-    }, 400); });
-    electron_1.app.on("window-all-closed", function () {
-        //
-    });
-    electron_1.app.on("activate", function () {
-        if (win === null) {
+    var canRun = electron_1.app.requestSingleInstanceLock();
+    if (canRun) {
+        // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
+        electron_1.app.on("ready", function () { return setTimeout(function () {
+            subscribeToEvents();
+            preloadTodoList();
+            createTray();
             createWindow();
-        }
-    });
+        }, 400); });
+        electron_1.app.on("window-all-closed", function () {
+            //
+        });
+        electron_1.app.on("activate", function () {
+            win.show();
+        });
+        electron_1.app.on("second-instance", function () {
+            win === null || win === void 0 ? void 0 : win.show();
+        });
+    }
+    else {
+        electron_1.app.quit();
+    }
 }
 catch (e) {
     electron_1.app.quit();
