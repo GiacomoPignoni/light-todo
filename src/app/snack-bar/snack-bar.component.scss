@@ -1,0 +1,33 @@
+.snack-bar {
+    position: fixed;
+    background: var(--main-color);
+    height: 35px;
+    border-radius: 0.25rem;
+    left: 10px;
+    width: calc(100% - 40px);
+    padding: 0 10px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 40px;
+    grid-column-gap: 10px;
+    transition: all 200ms ease-out;
+    bottom: -45px;
+    transform: scale(0.7);
+
+    &.visible {
+        bottom: 5px;
+        transform: scale(1);
+    }
+
+    .text {
+        color: var(--light-color);
+        font-size: 13px;
+    }
+    
+    .btn {
+        color: var(--light-color);
+        font-weight: bold;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+}

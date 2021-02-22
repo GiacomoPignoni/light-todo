@@ -1,0 +1,19 @@
+body {
+    &.light {
+        --main-color: #17C5BC;
+        --main-color-dark: #19AAA3;
+        --light-color: white;
+        --text-color: #303030;
+        --checked-color: #ddd;
+        --background-color: white;
+    }
+
+    &.dark {
+        --background-color: #121212;
+        --text-color: white;
+        --main-color-dark: #4a4a4a;
+        --light-color: #17C5BC;
+        --checked-color: black;
+        --main-color: #636363;
+    }
+}

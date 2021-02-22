@@ -1,0 +1,13 @@
+@keyframes shake {
+    33% {
+        transform: rotate(7deg);
+    }
+
+    66% {
+        transform: rotate(-7deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}

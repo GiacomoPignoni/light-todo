@@ -1,0 +1,67 @@
+$row-height: 40px;
+
+:host {
+    flex-grow: 1;
+    background-color: var(--background-color);
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    overflow: hidden;
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--background-color); 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+}
+
+.add-row {
+    height: $row-height;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    background: var(--main-color-dark);
+    border-radius: .25rem;
+    margin: 10px;
+
+    input {
+        background: transparent;
+        border: none;
+        caret-color: var(--light-color);
+        font-size: 16px;
+        font-family: "Montserrat";
+        flex-grow: 1;
+        margin-left: 10px;
+        color: var(--light-color);
+        
+        &::placeholder {
+            color: var(--light-color);
+            opacity: 0.8;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .add-btn {
+        margin-right: 10px;
+    }
+}
+
+.todo-list {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 5px;
+    padding: 0px 10px 10px 10px;
+}

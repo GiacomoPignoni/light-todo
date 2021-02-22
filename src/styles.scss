@@ -1,0 +1,39 @@
+@import "/src/styles/fonts.scss";
+@import "/src/styles/colors.scss";
+@import "/src/styles/shake-animation.scss";
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+.btn {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:focus {
+        outline: none
+    }
+
+    &.animated {
+        &:hover {
+            animation: shake 600ms infinite ease;
+        }
+    }
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

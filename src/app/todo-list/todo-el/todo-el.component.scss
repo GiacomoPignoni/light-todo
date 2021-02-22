@@ -1,0 +1,65 @@
+.todo-el {
+    background: transparent;
+    border-radius: .25rem;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 10px 28px auto 20px;
+    grid-column-gap: 5px;
+    border: var(--main-color) 3px solid;
+    transition: all 500ms ease;
+
+    &.checked {
+        background: var(--checked-color);
+
+        .text-container {
+            .line::after {
+                width: 100%;
+            }
+        }
+    }
+
+    .drag-icon-container {
+        color: var(--main-color);
+        cursor: ns-resize;
+    }
+
+    .text-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .line {
+          position: relative;
+        }
+
+        .line::after {
+          content: ' ';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: var(--text-color);
+          transition: all 500ms ease;
+        }
+    }
+
+    .button-container {
+        .remove-btn {
+            color: var(--main-color-dark);
+        }
+    }
+}
+
+::ng-deep {
+    .todo-el {
+        .drag-icon-container {
+            color: var(--main-color);
+            cursor: ns-resize;
+        }
+    }
+
+    .todo-el-preview {
+        background: var(--background-color);
+    }
+}

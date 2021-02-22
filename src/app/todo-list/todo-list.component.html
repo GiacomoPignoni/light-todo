@@ -1,0 +1,12 @@
+<div class="add-row">
+    <input type="text" placeholder="{{'INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="textInput" (keypress)="onTextInputKeyPress($event)">
+    <icon-button class="add-btn" icon="fa-plus" (click)="addElement()"></icon-button>
+</div>
+<div @list class="todo-list" cdkDropList (cdkDropListDropped)="drop($event)">
+    <todo-el @element *ngFor="let el of todoList; index as i" (checkChange)="onCheckChange(i)"
+        [element]="el" (removeClick)="removeElement(i)" cdkDrag cdkDragPreviewClass="todo-el-preview" cdkDragLockAxis="y">
+            <div class="flex-center drag-icon-container" cdkDragHandle>
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+    </todo-el>
+</div>

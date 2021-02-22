@@ -1,0 +1,14 @@
+<div class="todo-el" [ngClass]="{'checked': element.checked}">
+    <ng-content></ng-content>
+    <div class="flex-center checkbox-container ">
+        <checkbox [id]="element.id" [(checked)]="element.checked" (checkedChange)="checkChange.emit()"></checkbox>
+    </div>
+    <div class="text-container">
+        <span><span class="line">{{element.text}}</span></span>
+    </div>
+    <div class="flex-center button-container">
+        <button class="btn animated remove-btn" (click)="removeClick.emit()">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div> 
+</div>

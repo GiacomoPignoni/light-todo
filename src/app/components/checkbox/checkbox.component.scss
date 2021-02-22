@@ -1,0 +1,97 @@
+.cbx {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        transform: translate3d(0,0,0);
+        
+        &:first-child {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            transform: scale(1);
+            vertical-align: middle;
+            border: 2px solid var(--main-color);
+            transition: all .2s ease;
+
+            svg {
+                position: absolute;
+                z-index: 1;
+                top: 6px;
+                left: 5px;
+                fill: none;
+                stroke: white;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-dasharray: 20px;
+                stroke-dashoffset: 20px;
+                transition: all .3s ease;
+                transition-delay: .1s;
+                transform: translate3d(0,0,0);
+            }
+
+            &:before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: var(--main-color-dark);
+                display: block;
+                transform: scale(0);
+                opacity: 1;
+                border-radius: 50%;
+                transition-delay: .2s;
+            }
+        }
+
+        &:last-child {
+            &:after {
+                content: "";
+                position: absolute;
+                top: 8px;
+                left: 0;
+                height: 1px;
+                width: 100%;
+                background: var(--light-color);
+                transform-origin: 0 0;
+                transform: scaleX(0);
+            }
+        }
+    }
+        
+    &:hover span:first-child {
+        border-color: var(--main-color);
+    }
+}
+ 
+.inp-cbx:checked + .cbx {
+    span {
+        &:first-child {
+            border-color: var(--main-color);
+            background: var(--main-color);
+            animation: check .6s ease;
+
+            svg {
+                stroke-dashoffset: 0;
+            }
+
+            &:before {
+                transform: scale(2.2);
+                opacity: 0;
+                transition: all .6s ease;
+            }
+        }
+    }
+}
+    
+@keyframes check {
+    50% {
+        // There is glitch on check SVG using scale, need to investigate
+        // transform: scale(1.1);
+    }
+}

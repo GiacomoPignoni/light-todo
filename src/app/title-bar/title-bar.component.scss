@@ -1,0 +1,57 @@
+$height: 20px;
+
+.title-bar {
+    -webkit-app-region: drag;
+    height: $height;
+    background-color: var(--main-color);
+    display: grid;
+    align-items: center;
+    padding-left: 5px;
+    grid-template-columns: 75px auto;
+
+    label {
+        color: white;
+        font-size: 13px;
+    }
+
+    .icons {
+        height: 100%;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    
+        .menu-icon {
+            font-size: 12px;
+            height: 100%;
+            align-items: center;
+            display: flex;
+            width: 10px;
+            color: var(--light-color);
+            justify-content: center;
+
+            &:hover {
+                background-color: var(--main-color-dark);
+            }
+        }
+
+        .close-icon {
+            -webkit-app-region: none;
+            transition: all 200ms ease;
+            height: $height;
+            width: $height;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: var(--main-color-dark);
+            }
+
+            img {
+                height: $height - 7px;
+                width: $height - 7px;
+            }
+        }
+    }
+}
