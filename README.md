@@ -34,7 +34,7 @@ In this momemnt it's not avaible for Linux and MacOS but you can build in your o
 
 ## Contribution
 I really appreciate if someone would help me, then contribute!!!  
-Specially if you want to make a new icon, I'm really bad i this stuff
+Specially if you want to make a new icon, I'm really bad with this stuff
 
 ## Speacial thanks
 Special thanks to [maximegris](https://github.com/maximegris) that he made [angular-electron](https://github.com/maximegris/angular-electron), it's where I start this project
